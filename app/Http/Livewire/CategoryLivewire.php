@@ -7,7 +7,7 @@ use App\Models\Category;
 
 class CategoryLivewire extends Component
 {
-    public $category_name,$categories;
+    public $category_name,$categories,$check=true;
     public function render()
     {
         return view('livewire.category-livewire');
@@ -23,6 +23,7 @@ class CategoryLivewire extends Component
             'category_name' => $this->category_name
         ]);
         $this->resetFields();
+        $this->check = false;
 
     }
     public function resetFields(){
@@ -37,5 +38,11 @@ class CategoryLivewire extends Component
     }
     public function mount(){
         $this->categories = Category::all();
+    }
+    public function checkValueToTrue(){
+        $this->check=true;
+    }
+    public function checkValueToFalse(){
+        $this->check=false;
     }
 }

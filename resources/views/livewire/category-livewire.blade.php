@@ -1,5 +1,5 @@
 <div>
-
+            @if($check == true)
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Add Category</h4>
@@ -16,11 +16,14 @@
                       <button type="submit" class="btn btn-primary mr-2">Add Category</button>
                       
                     </form>
+                    <a style="margin-top: 5px;" wire:click="checkValueToFalse" class="btn btn-success">View Category</a>
                   </div>
                 </div>
-                <br>
+                @else
+        <br>
                 <div class="card">
                   <div class="card-body">
+                 <a wire:click="checkValueToTrue" class="btn btn-success">Add Category</a><br><hr style="background-color: white; margin-top:5px">
                     <h4 class="card-title">Category Table</h4>
                     <div class="table-responsive">
                           <table class="table" id="category_table">
@@ -30,6 +33,7 @@
                                 <th>Category Id</th>
                                 <th>Category Name</th>
                                 <th>Action</th>
+                                
                                 <!-- <th>Status</th> -->
                               </tr>
                             </thead>
@@ -39,10 +43,14 @@
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$category->category_id}}</td>
                                 <td>{{$category->category_name}}</td>
+                                
                                 <td>
+                                @role('admin')
                                   <a href="#" class="btn btn-danger">Delete</a>
+                                  @endrole
                                   <a href="#" class="btn btn-success">Edit</a>
                                 </td>
+                                
                                 <!-- <td><label class="badge badge-danger">Pending</label></td> -->
                               </tr>
                               @endforeach
@@ -51,5 +59,6 @@
                         </div>
                   </div>
                 </div>
+                @endif
               
 </div>
