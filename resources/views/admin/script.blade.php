@@ -32,5 +32,6 @@
             $('#product_table').DataTable();
         });
     </script>
+    @livewireScripts
 
     <!-- End jQuery Table -->

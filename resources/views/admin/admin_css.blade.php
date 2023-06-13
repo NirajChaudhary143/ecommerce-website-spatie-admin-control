@@ -18,4 +18,5 @@
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{ asset('admin') }}/assets/images/favicon.png" />
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+    @livewireStyles
     

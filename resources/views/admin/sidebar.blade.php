@@ -13,7 +13,9 @@
                 </div>
                 <div class="profile-name">
                   <h5 class="mb-0 font-weight-normal" style="text-transform: capitalize;">{{Auth::user()->name}}</h5>
-                  <span>Super Admin</span>
+                  @foreach (Auth::user()->roles as $role)
+                      <span>{{ $role->name }}</span>
+                  @endforeach
                 </div>
               </div>
               <a href="#" id="profile-dropdown" data-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
