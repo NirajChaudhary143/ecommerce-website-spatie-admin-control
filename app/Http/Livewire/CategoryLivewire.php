@@ -10,4 +10,7 @@ class CategoryLivewire extends Component
     {
         return view('livewire.category-livewire');
     }
+    public function index(){
+        return view('admin.category');
+    }
 }

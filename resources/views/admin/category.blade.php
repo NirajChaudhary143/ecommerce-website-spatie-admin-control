@@ -12,7 +12,12 @@
       <!-- partial -->
       @include('admin.navbar')
         <!-- partial -->
-        @include('admin.main_panel')
+        <div class="main-panel">
+          <div class="content-wrapper">
+            
+            <livewire:category-livewire/>
+          </div>
+        </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
     @include('admin.script')

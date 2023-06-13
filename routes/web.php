@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Livewire\CategoryLivewire;
 use Illuminate\Support\Facades\Route;
 
 
@@ -31,7 +32,9 @@ Route::middleware('auth')->group(function () {
 });
 Route::middleware('auth','role:admin|staff')->group(function (){
     Route::get('/admin-panel',[AdminController::class,'index'])->name('admin.index');
+    Route::get('/category',[CategoryLivewire::class,'index'])->name('admin.category');
 });
+Route::get('/redirect',[AdminController::class,'redirect'])->middleware('auth');
 
 
 
