@@ -13,7 +13,7 @@ class AdminController extends Controller
     public function redirect(){
         $user = Auth::user();
         if($user->roles->contains('name','user')){
-            return "You are user";
+            return redirect('/');
         }
         elseif($user->roles->contains('name','admin')){
             return redirect('/admin-panel');

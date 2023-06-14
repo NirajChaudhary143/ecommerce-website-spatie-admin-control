@@ -7,7 +7,7 @@ use App\Models\Category;
 
 class CategoryLivewire extends Component
 {
-    public $category_name,$categories,$check=true;
+    public $category_name,$categories,$check='add',$c_id;
     public function render()
     {
         return view('livewire.category-livewire');
@@ -17,13 +17,14 @@ class CategoryLivewire extends Component
     }
     public function addCategory(){
         $this->validate([
-            'category_name'=>'required'
+            'category_name'=>'required|unique:categories,category_name'
         ]);
         Category::create([
             'category_name' => $this->category_name
         ]);
         $this->resetFields();
-        $this->check = false;
+        $this->mount();
+        $this->check = "view";
 
     }
     public function resetFields(){
@@ -33,16 +34,27 @@ class CategoryLivewire extends Component
     // Validation
     public function updated($field){
         $this->validateOnly($field,[
-            'category_name'=>'required'
+            'category_name'=>'required|unique:categories,category_name'
         ]);
     }
     public function mount(){
         $this->categories = Category::all();
     }
     public function checkValueToTrue(){
-        $this->check=true;
+        $this->check='add';
     }
     public function checkValueToFalse(){
-        $this->check=false;
+        $this->check='view';
+        
+    }
+    public function deleteCategory($id){
+        Category::find($id)->delete();
+        $this->mount();
+    }
+    public function editCategory($id){
+        $category = Category::find($id);
+        $this->c_id=$id;
+        $this->category_name=$category->category_name;
+        $this->check='edit';
     }
 }

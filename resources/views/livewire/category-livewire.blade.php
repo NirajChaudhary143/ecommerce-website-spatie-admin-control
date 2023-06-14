@@ -1,5 +1,5 @@
 <div>
-            @if($check == true)
+            @if($check == 'add')
                 <div class="card">
                   <div class="card-body">
                     <h4 class="card-title">Add Category</h4>
@@ -19,11 +19,10 @@
                     <a style="margin-top: 5px;" wire:click="checkValueToFalse" class="btn btn-success">View Category</a>
                   </div>
                 </div>
-                @else
-        <br>
+                @elseif($check =='view')
                 <div class="card">
                   <div class="card-body">
-                 <a wire:click="checkValueToTrue" class="btn btn-success">Add Category</a><br><hr style="background-color: white; margin-top:5px">
+                 <a wire:click="checkValueToTrue" class="btn btn-success">Add Category</a>
                     <h4 class="card-title">Category Table</h4>
                     <div class="table-responsive">
                           <table class="table" id="category_table">
@@ -46,9 +45,9 @@
                                 
                                 <td>
                                 @role('admin')
-                                  <a href="#" class="btn btn-danger">Delete</a>
+                                  <a wire:click="deleteCategory({{$category->category_id}})" class="btn btn-danger">Delete</a>
                                   @endrole
-                                  <a href="#" class="btn btn-success">Edit</a>
+                                  <a wire:click="editCategory({{$category->category_id}})" class="btn btn-success">Edit</a>
                                 </td>
                                 
                                 <!-- <td><label class="badge badge-danger">Pending</label></td> -->
@@ -59,6 +58,8 @@
                         </div>
                   </div>
                 </div>
+                @elseif($check=='edit')
+                <livewire:edit-category :category_name="$category_name" :c_id="$c_id" />
                 @endif
               
 </div>
