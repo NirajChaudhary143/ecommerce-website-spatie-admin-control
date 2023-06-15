@@ -44,9 +44,9 @@
                                 <td>{{$category->category_name}}</td>
                                 
                                 <td>
-                                @role('admin')
+                                
                                   <a wire:click="deleteCategory({{$category->category_id}})" class="btn btn-danger">Delete</a>
-                                  @endrole
+                                  
                                   <a wire:click="editCategory({{$category->category_id}})" class="btn btn-success">Edit</a>
                                 </td>
                                 

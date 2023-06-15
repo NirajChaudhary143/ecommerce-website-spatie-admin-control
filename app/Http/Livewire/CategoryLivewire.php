@@ -48,9 +48,20 @@ class CategoryLivewire extends Component
         
     }
     public function deleteCategory($id){
-        Category::find($id)->delete();
+        // $this->middleware('isAdmin');
+        // Category::find($id)->delete();
+        // $this->mount();
+        $category = Category::find($id);
+
+        // Check if the user is authorized to delete the category
+        if(!auth()->user()->roles->contains('name','admin')){
+            abort(403, 'Unauthorized action.');
+        }
+
+        $category->delete();
         $this->mount();
     }
+    
     public function editCategory($id){
         $category = Category::find($id);
         $this->c_id=$id;

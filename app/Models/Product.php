@@ -18,9 +18,11 @@ class Product extends Model
         'product_description',
         'category_id',
         'product_price',
+        'product_discount',
+        'product_quantity'
     ];
 
     protected function category(){
-        return $this->belongsTo(Category::class,'category_id','product_id');
+        return $this->belongsTo(Category::class,'category_id','category_id');
     }
 }

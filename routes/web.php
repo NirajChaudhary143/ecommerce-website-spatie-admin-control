@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Livewire\CategoryLivewire;
+use App\Http\Livewire\ProductLivewire;
 use Illuminate\Support\Facades\Route;
 
 
@@ -33,6 +34,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth','role:admin|staff')->group(function (){
     Route::get('/admin-panel',[AdminController::class,'index'])->name('admin.index');
     Route::get('/category',[CategoryLivewire::class,'index'])->name('admin.category');
+    Route::get('/product',[ProductLivewire::class,'index'])->name('admin.product');
 });
 Route::get('/redirect',[AdminController::class,'redirect'])->middleware('auth');
 

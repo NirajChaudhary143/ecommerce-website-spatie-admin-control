@@ -66,7 +66,7 @@
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
-          <li class="nav-item menu-items">
+          <!-- <li class="nav-item menu-items">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <span class="menu-icon">
                 <i class="mdi mdi-laptop"></i>
@@ -80,7 +80,7 @@
                 <li class="nav-item"> <a class="nav-link" href="#">Show Products</a></li>
               </ul>
             </div>
-          </li>
+          </li> -->
           <!-- <li class="nav-item menu-items">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <span class="menu-icon">
@@ -97,6 +97,14 @@
             </div>
           </li> -->
 
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="{{ route('admin.product') }}">
+              <span class="menu-icon">
+                <i class="mdi mdi-playlist-play"></i>
+              </span>
+              <span class="menu-title">Product</span>
+            </a>
+          </li>
           <li class="nav-item menu-items">
             <a class="nav-link" href="{{ route('admin.category') }}">
               <span class="menu-icon">
