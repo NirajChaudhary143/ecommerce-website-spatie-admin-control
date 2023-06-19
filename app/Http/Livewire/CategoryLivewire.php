@@ -7,7 +7,7 @@ use App\Models\Category;
 
 class CategoryLivewire extends Component
 {
-    public $category_name,$categories,$check='add',$c_id;
+    public $category_name,$categories,$check='view',$c_id;
     public function render()
     {
         return view('livewire.category-livewire');

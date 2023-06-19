@@ -59,7 +59,7 @@
             <span class="nav-link">Navigation</span>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="{{ route('dashboard') }}">
+            <a class="nav-link " href="{{ route('admin.index') }}">
               <span class="menu-icon">
                 <i class="mdi mdi-speedometer"></i>
               </span>
@@ -98,21 +98,30 @@
           </li> -->
 
           <li class="nav-item menu-items">
-            <a class="nav-link" href="{{ route('admin.product') }}">
+            <a class="nav-link"  data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
               <span class="menu-icon">
-                <i class="mdi mdi-playlist-play"></i>
+                <i class="mdi mdi-security"></i>
               </span>
-              <span class="menu-title">Product</span>
+              <span class="menu-title">Products</span>
+              <i class="menu-arrow"></i>
             </a>
+            <div class="collapse" id="auth">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link " href="{{ route('show.product') }}"> View Products </a></li>
+                <li class="nav-item"> <a class="nav-link " href="{{ route('add.product') }}"> Add Products </a></li>
+               
+              </ul>
+            </div>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="{{ route('admin.category') }}">
+            <a class="nav-link " href="{{ route('admin.category') }}">
               <span class="menu-icon">
                 <i class="mdi mdi-playlist-play"></i>
               </span>
               <span class="menu-title">Category</span>
             </a>
           </li>
+          
           <!-- <li class="nav-item menu-items">
             <a class="nav-link" href="pages/tables/basic-table.html">
               <span class="menu-icon">

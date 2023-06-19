@@ -2,7 +2,7 @@
             @if($check == 'add')
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Add Category</h4>
+                    <h4 class="card-title" >Add Category</h4>
                     <form wire:submit.prevent="addCategory" class="forms-sample">
                       <div class="form-group">
                         <label>Category Name</label>
@@ -13,7 +13,7 @@
                             @error('category_name') {{$message}} <br><br> @enderror
                         </span>
                         
-                      <button type="submit" class="btn btn-primary mr-2">Add Category</button>
+                      <button type="submit" class="btn btn-primary mr-2" >Add Category</button>
                       
                     </form>
                     <a style="margin-top: 5px;" wire:click="checkValueToFalse" class="btn btn-success">View Category</a>
@@ -22,7 +22,7 @@
                 @elseif($check =='view')
                 <div class="card">
                   <div class="card-body">
-                 <a wire:click="checkValueToTrue" class="btn btn-success">Add Category</a>
+                 <a wire:click="checkValueToTrue" class="btn btn-success">Add Category</a><br>
                     <h4 class="card-title">Category Table</h4>
                     <div class="table-responsive">
                           <table class="table" id="category_table">

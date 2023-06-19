@@ -17,7 +17,8 @@ class ProductLivewire extends Component
         return view('livewire.product-livewire');
     }
     public function index(){
-        return view('admin.product');
+        $categories= Category::all();
+        return view('admin.product',compact('categories'));
     }
     public function mount(){
         $this->categories =Category::all();

@@ -13,7 +13,8 @@
                         </span>
                         <div class="form-group">
                         <label>Product Description</label>
-                        <input type="text" style="color: white; background-color: black" class="form-control" wire:model="product_description">
+                        
+                        <textarea name="product_description" id="editor"  ></textarea>
                         
                       </div>
                       <span class="text-danger">
@@ -51,7 +52,7 @@
                       <div class="form-group">
                         <label>Product Discount</label><br>
                         <input type="text" style="color: white; background-color: black" class="form-control" wire:model="product_discount">
-                        
+                    
                       </div>
                       <span class="text-danger">
                             @error('product_discount') {{$message}} <br><br> @enderror
@@ -65,7 +66,7 @@
                             @error('product_quantity') {{$message}} <br><br> @enderror
                         </span>
                         
-                      <button type="submit" class="btn btn-primary mr-2">Add Product</button>
+                      <button type="submit" class="btn btn-primary mr-2" >Add Product</button>
                       
                     </form>
                     <!-- <a style="margin-top: 5px;" wire:click="checkValueToFalse" class="btn btn-success">View Category</a> -->

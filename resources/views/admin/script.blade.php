@@ -20,7 +20,40 @@
         <!--jQuery Datables -->
         <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/classic/ckeditor.js"></script>
+    <!-- <script src="{{ asset('assets/js/jquery-3.6.4.min.js')}}"></script> -->
+    <script src="{{ asset('assets/js/dropzone.min.js')}}"></script>
+<script>
+   Dropzone.autoDiscover = false;    
+  const dropzone = $("#image").dropzone({ 
+	
+      url:  "{{ route('temp-images.create') }}",
+      maxFiles: 10,
+      paramName: 'image',
+      addRemoveLinks: true,
+      acceptedFiles: "image/jpeg,image/png,image/gif",
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+      }, success: function(file, response){
+        var html = `<div class="col-md-3 mb-3" id="product-image-row-${response.image_id}">
+                            <div class="card image-card">
+                                <a href="#" onclick="" class="btn btn-danger">Delete</a>
+                                <img src="${response.imagePath}" alt="" class="w-100 card-img-top">
+                                <div class="card-body">
+                                    
+                                    <input type="hidden" name="image_id[]" value="${response.image_id}"/>
+                                </div>
+                            </div>
+                        </div>`;
+             $("#image-wrapper").append(html);
+          this.removeFile(file);            
+      }
+  });
 
+ 
+
+
+</script>
 
     <script>
         $(document).ready(function(){
@@ -32,6 +65,18 @@
             $('#product_table').DataTable();
         });
     </script>
+                <script>
+                        ClassicEditor
+                                .create( document.querySelector( '#editor' ) )
+                                .then( editor => {
+                                        console.log( editor );
+                                } )
+                                .catch( error => {
+                                        console.error( error );
+                                } );
+                </script>
+
+               
     @livewireScripts
 
     <!-- End jQuery Table -->

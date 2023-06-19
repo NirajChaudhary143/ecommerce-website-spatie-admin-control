@@ -15,7 +15,13 @@
         <div class="main-panel">
           <div class="content-wrapper">
             
-            <livewire:product-livewire/>
+          <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Add Product</h4>
+                    @include('admin.productForm')
+                    <!-- <a style="margin-top: 5px;" wire:click="checkValueToFalse" class="btn btn-success">View Category</a> -->
+                  </div>
+                </div>
 
           </div>
         </div>
