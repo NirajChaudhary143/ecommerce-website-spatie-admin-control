@@ -46,7 +46,11 @@ class ProductImageController extends Controller
         if($image){
             File::delete(public_path('uploads/products/'.$image->name));
             $image->delete();
-            
+            return response()->json(
+                [
+                    'status'=>'delete'
+                ]
+                );
         }
        
     }

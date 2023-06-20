@@ -67,30 +67,47 @@
           this.removeFile(file);            
       }
   });
+  var imageIdsToDelete = []; // Array to store the IDs of images to delete
 
-  function deleteImage(id){
-    // {{ route('product-image.delete',$product->id)}}
-    if(confirm("Are you sure to delete image")){
-      var URL ="{{route('product-image.delete','ID')}}";
-      newUrl = URL.replace('ID',id);
-      $("#product-image-row-"+id).remove();
-      $.ajax({
-            url: newUrl, 
-            data: {},
-            method: 'delete',
-            dataType:'json',
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-            },
-            success: function(response){
-               
-            }
-        });
+function deleteImage(id) {
+    if (confirm("Are you sure you want to delete this image?")) {
+        // Remove the image div from the HTML
+        $("#product-image-row-" + id).remove();
+
+        // Add the ID of the image to delete to the array
+        imageIdsToDelete.push(id);
     }
+}
 
-  }
+$("#updateBtn").on("click", function() {
+    if (imageIdsToDelete.length >= 0) {
+        var URL = "{{ route('product-image.delete', 'ID') }}";
 
- 
+        // Loop through the array and send separate AJAX requests to delete each image
+        imageIdsToDelete.forEach(function(imageId) {
+            var newUrl = URL.replace('ID', imageId);
+
+            // Send AJAX request to delete the file
+            $.ajax({
+                url: newUrl,
+                method: 'DELETE',
+                dataType: 'json',
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                },
+                success: function(response) {
+                    // Handle the success response here
+                },
+                error: function(xhr, status, error) {
+                    // Handle the error response here
+                }
+            });
+        });
+
+        // Clear the array after deletion
+        imageIdsToDelete = [];
+    }
+});
 
 
 </script>

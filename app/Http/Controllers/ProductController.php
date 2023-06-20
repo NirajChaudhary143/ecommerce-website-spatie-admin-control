@@ -65,10 +65,6 @@ class ProductController extends Controller
                 $img = Image::make($sourcePath);
                 $img->fit(350,300);
                 $img->save($destPath);
-
-              
-                $product->product_image = "/uploads/products/".$newImageName;
-                $product->save();
                 
             }
         }        

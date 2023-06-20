@@ -47,7 +47,7 @@
                                 <th>Product Image</th>
                                 <th>Product Title</th>
                                 <th>Product Description</th>
-                                <th>Product Quantity</th>
+                                <th>Product Price</th>
                                 <th>Product Category</th>
                                 <th>Action</th>
                                 <!-- <th>Status</th> -->
@@ -59,11 +59,18 @@
                               
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$product->id}}</td>
-                                    <td><img src="{{ asset($product->product_image)}}" alt="img" height="50" width="50"></td>
+                                    <td>
+                                    @foreach($productImage as $image)
+                                        @if($image->product_id == $product->id)
+                                            <img src="{{ asset('uploads/products/'.$image->name) }}" alt="img" height="50" width="50">
+                                            @break
+                                        @endif
+                                    @endforeach
+                                    </td>
                                     <td>{{$product->product_title}}</td>
                                     <td >{!!$product->product_description!!}
                                     </td>
-                                    <td>{{$product->product_quantity}}</td>
+                                    <td>{{$product->product_price}}</td>
                                     <td>{{$product->category->category_name}}</td>
                                     <td>
                                     <a href="{{ route('delete.product',[ 'id'=>$product->id]) }}" class="btn btn-danger">Delete</a>
@@ -73,6 +80,7 @@
                             
                               @endforeach
                             </tbody>
+                           
                           </table>
                         </div>
                       </div>
@@ -86,12 +94,8 @@
     <!-- plugins:js -->
     @include('admin.script')
     <!-- End custom js for this page -->
+    
+
   </body>
 </html>
 
-
-<!-- @foreach($productImage as $productImage)
-                                      @if($productImage->product_id == $product->id)
-                                        asset('uploads/products/'.$productImage->name)
-                                      @endif
-                                    @endforeach -->

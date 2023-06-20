@@ -185,7 +185,7 @@
                             </div>
                             <!-- Row End -->
                         
-                          {!! Form::submit($submit,['class'=>'btn btn-primary mr-2 mt-2']) !!}
+                          {!! Form::submit($submit,['class'=>'btn btn-primary mr-2 mt-2','id'=>'updateBtn']) !!}
 
     {!! Form::close() !!}
 
