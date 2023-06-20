@@ -56,7 +56,7 @@
                             <tbody>
                                 @foreach($products as $product)
                                 <tr>
-
+                              
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$product->id}}</td>
                                     <td><img src="{{ asset($product->product_image)}}" alt="img" height="50" width="50"></td>
@@ -88,3 +88,10 @@
     <!-- End custom js for this page -->
   </body>
 </html>
+
+
+<!-- @foreach($productImage as $productImage)
+                                      @if($productImage->product_id == $product->id)
+                                        asset('uploads/products/'.$productImage->name)
+                                      @endif
+                                    @endforeach -->

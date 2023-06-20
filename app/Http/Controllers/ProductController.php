@@ -61,13 +61,13 @@ class ProductController extends Controller
                 // $tempImage->name->move(public_path('uploads/temp/'),$$newImageName);
 
                 $sourcePath = public_path('uploads/temp/').$tempImage->name;
-                $destPath = public_path('/uploads/products/').$tempImage->name;
+                $destPath = public_path('/uploads/products/').$newImageName;
                 $img = Image::make($sourcePath);
                 $img->fit(350,300);
                 $img->save($destPath);
 
               
-                $product->product_image = "/uploads/products/".$tempImage->name;
+                $product->product_image = "/uploads/products/".$newImageName;
                 $product->save();
                 
             }
@@ -80,8 +80,8 @@ class ProductController extends Controller
 
     public function showProduct(){
         $products = Product::with('category')->get();
-    
-        return view('admin.showProduct',compact('products'));
+        $productImage = ProductImage::all();
+        return view('admin.showProduct',compact('products','productImage'));
     }
 
     public function deleteProduct($id){
@@ -132,11 +132,11 @@ class ProductController extends Controller
 
         
         if($product){
-            if ($request->hasFile('image')) {
-                $fileName = time() . '-niraj.' . $request->file('image')->getClientOriginalExtension();
-                $path = $request->file('image')->storeAs('products_image', $fileName, 'public');
-                $product->product_image = '/storage/' . $path;
-            }
+            // if ($request->hasFile('image')) {
+            //     $fileName = time() . '-niraj.' . $request->file('image')->getClientOriginalExtension();
+            //     $path = $request->file('image')->storeAs('products_image', $fileName, 'public');
+            //     $product->product_image = '/storage/' . $path;
+            // }
             
             // $fileName =time().'-niraj.'.$request->file('image')->getClientOriginalExtension();
             // $path = $request->file('image')->storeAs('products_image',$fileName,'public');

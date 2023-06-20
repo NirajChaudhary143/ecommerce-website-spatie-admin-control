@@ -1,7 +1,17 @@
 
+                         @if(isset($product))
 
+        
+                            {!! Form::model($product,[
+                              'route'=>['update.product', $product->id],
+                            'class'=>'forms-control',
+                            'mehtod'=>'post',
+                            'enctype'=>'multipart/form-data',
+                            'id'=>'productFormEdit',
+                            'name'=>'productFormEdit'
+                            ]) !!}
                        
-
+                              @else
                             {!! Form::model([
                             'route'=> 'add.product',
                             'class'=>'forms-control',
@@ -10,7 +20,7 @@
                             'id'=>'productForm',
                             'name'=>'productForm'
                             ]) !!}
-                        
+                        @endif
                             <!-- Row Start -->
                         <div class="row">
                           <!-- Row Start -->
@@ -127,27 +137,35 @@
                                             <br>Drop files here or click to upload.<br><br>                                            
                                         </div>
                                     </div>
-
-                                  <!-- {!! Form::label('','Product Image')!!}
-                                  {!! Form::file('image',[
-                                    'class'=>'form-control',
-                                  'id'=>'image'
-                                  ]) !!} -->
-                                    
                                 </div>
+                                
                                 <div class="row" id="image-wrapper">
-                            
+                                @if(isset($productImages))
+                                  @foreach($productImages as $productImage)
+                                  <div class="col-md-3 mb-3" id="product-image-row-{{$productImage->id}}">
+                                    <div class="card image-card">
+                                        <a href="#" onclick="deleteImage({{$productImage->id }});" class="btn btn-danger">Delete</a>
+                                        <img src="{{ asset('uploads/products/'.$productImage->name) }}" alt="" class="w-100 card-img-top">
+                                        <div class="card-body">
+                                            
+                                            <input type="hidden" name="image_id[]" value="#"/>
+                                        </div>
+                                    </div>
+                                  </div>
+                                  @endforeach
+                                  @endif
                                 </div>
+                               
                                 </div>
 
                                 <div class="col p-2 mt-3" style="border-radius: 10px;  box-shadow: 2px 1px 5px 1px #888888;">
                                 <div class="mb-6 mt-3" >
                                       <div>
                                         <strong> {!! Form::label('','Categories') !!}  </strong>
-                                          <div class="md-3">
+                                        <div class="md-3">
                                           {!! Form::select('product_category',$categories->pluck('category_name','category_id'),isset($product) ? $product->category_id : '',[
-                                          'class'=>'form-control',
-                                          'style'=>'color:while;background-color:black',
+                                          'class'=>'form-control js-example-basic-multiple',
+                                          'style'=>'color:white;background-color:black',
                                           ]) !!}
                                         </div>
                                       </div>
@@ -170,6 +188,8 @@
                           {!! Form::submit($submit,['class'=>'btn btn-primary mr-2 mt-2']) !!}
 
     {!! Form::close() !!}
+
+    
 
                         
                         

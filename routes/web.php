@@ -44,6 +44,8 @@ Route::middleware('auth','role:admin|staff')->group(function (){
     Route::get('/edit-product/{id}',[ProductController::class,'editProduct'])->name('edit.product');
     Route::post('/update-product/{id}',[ProductController::class,'updateProduct'])->name('update.product');
     Route::post('/temp-images',[tempImageController::class,'store'])->name('temp-images.create');
+    Route::post('/product-images',[ProductImageController::class,'store'])->name('product-image.store');
+    Route::delete('/product-images/delete/{image_id}',[ProductImageController::class,'deleteImage'])->name('product-image.delete');
     // Route::post('/product-images',[ProductImageController::class,'store'])->name('product-images.store');
 });
 Route::get('/redirect',[AdminController::class,'redirect'])->middleware('auth');

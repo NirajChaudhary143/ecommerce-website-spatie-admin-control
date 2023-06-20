@@ -38,6 +38,33 @@
     <!-- container-scroller -->
     <!-- plugins:js -->
     @include('admin.script')
+    <script>
+   Dropzone.autoDiscover = false;    
+  const dropzone = $("#image").dropzone({ 
+	
+      url:  "{{ route('temp-images.create') }}",
+      maxFiles: 10,
+      paramName: 'image',
+      addRemoveLinks: true,
+      acceptedFiles: "image/jpeg,image/png,image/gif",
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+      }, success: function(file, response){
+        var html = `<div class="col-md-3 mb-3" id="product-image-row-${response.image_id}">
+                            <div class="card image-card">
+                                <a href="#" onclick="" class="btn btn-danger">Delete</a>
+                                <img src="${response.imagePath}" alt="" class="w-100 card-img-top">
+                                <div class="card-body">
+                                    
+                                    <input type="hidden" name="image_id[]" value="${response.image_id}"/>
+                                </div>
+                            </div>
+                        </div>`;
+             $("#image-wrapper").append(html);
+          this.removeFile(file);            
+      }
+  });
+  </script>
     <!-- End custom js for this page -->
   </body>
 </html>

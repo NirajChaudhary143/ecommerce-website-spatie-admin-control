@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/dropzone.min.css') }}">
+    <!-- Select2 -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <meta name="_token" content="{{csrf_token()}}">
     @livewireStyles
     
@@ -38,7 +40,71 @@
            
             border-radius: 10px;
         }
- 
+        
+        .image-card{
+            position: relative;
+        }
+        .image-card .btn-danger{
+            position: absolute;
+            right: 0px;
+            top: 0px;
+        }
+       /* Custom styling for Select2 */
+        .select2-container {
+        width: 100%;
+        height: 30px;
+        }
+
+        .select2-container .select2-selection {
+        background-color: black;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        color: white;
+        padding: 8px;
+        }
+
+        .select2-container .select2-selection--single {
+        height: 34px;
+        }
+
+        .select2-container .select2-selection--multiple {
+        min-height: 34px;
+        height: auto;
+        }
+
+        .select2-container .select2-selection__choice {
+        background-color: #555;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 2px 8px;
+        margin-right: 4px;
+        }
+
+        .select2-container .select2-selection__choice__remove {
+        color: #ccc;
+        margin-left: 4px;
+        }
+
+        .select2-container .select2-selection__placeholder {
+        color: #ccc;
+        }
+
+        .select2-container .select2-results__option--highlighted {
+        background-color: #555;
+        color: white;
+        }
+
+        .select2-container .select2-results__option--selected {
+        background-color: #555;
+        color: white;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: white;
+    line-height: 0px;
+}
+
+  
 
      
     </style>
