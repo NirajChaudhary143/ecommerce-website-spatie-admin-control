@@ -80,7 +80,7 @@ function deleteImage(id) {
 }
 
 $("#updateBtn").on("click", function() {
-    if (imageIdsToDelete.length >= 0) {
+    if (imageIdsToDelete.length > 0) {
         var URL = "{{ route('product-image.delete', 'ID') }}";
 
         // Loop through the array and send separate AJAX requests to delete each image

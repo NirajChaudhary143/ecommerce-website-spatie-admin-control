@@ -52,7 +52,7 @@
       }, success: function(file, response){
         var html = `<div class="col-md-3 mb-3" id="product-image-row-${response.image_id}">
                             <div class="card image-card">
-                                <a href="#" onclick="" class="btn btn-danger">Delete</a>
+                                <a href="#" onclick="deleteImage(${response.image_id})" class="btn btn-danger">Delete</a>
                                 <img src="${response.imagePath}" alt="" class="w-100 card-img-top">
                                 <div class="card-body">
                                     
@@ -64,6 +64,27 @@
           this.removeFile(file);            
       }
   });
+function deleteImage(id){
+  if(confirm("Are you sure to delete image")){
+    $("#product-image-row-"+id).remove();
+    var URL = "{{ route('delete-temp-images','ID') }}";
+    newUrl =URL.replace('ID',id);
+  $.ajax({
+    url:newUrl,
+    data:{},
+    method:'delete',
+    dataType:'json',
+    headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            },
+            success: function(response){
+              
+            }
+  });
+}
+
+}
+
   </script>
     <!-- End custom js for this page -->
   </body>
