@@ -41,7 +41,7 @@
     @include('admin.script')
     <script>
    Dropzone.autoDiscover = false;
-   var product_id ={{$product->id}}    
+   var product_id ={{$product->id}}; 
   const dropzone = $("#image").dropzone({ 
      
       url:  "{{ route('product-image.store') }}",

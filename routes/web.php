@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductImageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\tempImageController;
+use App\Http\Controllers\UserController;
 use App\Http\Livewire\CategoryLivewire;
 use App\Http\Livewire\ProductLivewire;
 use Illuminate\Support\Facades\Route;
@@ -21,9 +22,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home.userpage');
-});
+Route::get('/',[UserController::class,'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -50,6 +49,8 @@ Route::middleware('auth','role:admin|staff')->group(function (){
     // Route::post('/product-images',[ProductImageController::class,'store'])->name('product-images.store');
 });
 Route::get('/redirect',[AdminController::class,'redirect'])->middleware('auth');
+Route::get('/product-details/{id}',[UserController::class,'product_details'])->name('product_details');
+Route::get('/product-add-carts/{id}',[UserController::class,'cart'])->middleware('auth')->name('product.cart');
 
 
 

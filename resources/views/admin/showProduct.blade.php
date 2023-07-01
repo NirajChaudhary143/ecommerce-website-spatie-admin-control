@@ -67,8 +67,8 @@
                                         @endif
                                     @endforeach
                                     </td>
-                                    <td>{{$product->product_title}}</td>
-                                    <td >{!!$product->product_description!!}
+                                    <td>{!! Illuminate\Support\Str::limit($product->product_title, $limit = 30, $end = '...') !!}</td>
+                                    <td >{!! Illuminate\Support\Str::limit($product->product_description, $limit = 30, $end = '...') !!}
                                     </td>
                                     <td>{{$product->product_price}}</td>
                                     <td>{{$product->category->category_name}}</td>

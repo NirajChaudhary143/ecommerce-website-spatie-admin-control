@@ -26,7 +26,6 @@ class ProductController extends Controller
         $request->validate([
             'product_title' => ['required', 'not_regex:/^[0-9]+$/'],
             'product_description'=>['required', 'not_regex:/^[0-9]+$/'],
-            'product_quantity'=>'required',
             
             'product_category'=>'required',
             'product_price'=>['required', 'regex:/^[0-9]+$/'],
@@ -37,7 +36,7 @@ class ProductController extends Controller
         $product->product_title=$request['product_title'];
         $product->product_description=$request['product_description'];
         $product->product_quantity=$request['product_quantity'];
-        $product->product_discount=$request['discount_price'];
+        $product->product_discount=$request['product_discount'];
         $product->category_id=$request['product_category'];
         $product->product_price=$request['product_price'];
         $product->product_image="Null";
@@ -63,7 +62,9 @@ class ProductController extends Controller
                 $sourcePath = public_path('uploads/temp/').$tempImage->name;
                 $destPath = public_path('/uploads/products/').$newImageName;
                 $img = Image::make($sourcePath);
-                $img->fit(350,300);
+                $img->resize(350, 400, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
                 $img->save($destPath);
                 
             }
@@ -117,7 +118,6 @@ class ProductController extends Controller
         $request->validate([
             'product_title'=>['required', 'not_regex:/^[0-9]+$/'],
             'product_description'=>['required', 'not_regex:/^[0-9]+$/'],
-            'product_quantity'=>'required',
             
             'product_category'=>'required',
             'product_price'=>['required', 'regex:/^[0-9]+$/'],
@@ -141,7 +141,7 @@ class ProductController extends Controller
             $product->product_title=$request['product_title'];
             $product->product_description=$request['product_description'];
             $product->product_quantity=$request['product_quantity'];
-            $product->product_discount=$request['discount_price'];
+            $product->product_discount=$request['product_discount'];
             $product->category_id=$request['product_category'];
             $product->product_price=$request['product_price'];
             $product->save();

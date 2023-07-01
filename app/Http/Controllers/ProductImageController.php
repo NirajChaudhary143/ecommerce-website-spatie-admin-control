@@ -27,7 +27,9 @@ class ProductImageController extends Controller
             $sourcePath = $image->getPathName();
             $destPath = public_path('/uploads/products/').$newImageName;
             $img = Image::make($sourcePath);
-            $img->fit(350,300);
+            $img->resize(350, 400, function ($constraint) {
+                         $constraint->aspectRatio();
+                });
             $img->save($destPath);
 
 

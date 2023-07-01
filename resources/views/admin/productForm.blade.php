@@ -90,7 +90,7 @@
                                           'style'=>'text-decoration:line-through;'
                                           ]) !!}  </strong>
                                           <div class="md-3">
-                                          {!! Form::number('discount_price',null,[
+                                          {!! Form::number('product_discount',null,[
                                             'class'=>'form-control',
                                             'style'=>'color:white;background:black',
                                             ]) !!}

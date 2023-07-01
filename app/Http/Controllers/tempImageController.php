@@ -30,6 +30,7 @@ class tempImageController extends Controller
                 $sourcePath = public_path('uploads/temp/'.$imageName);
                 $destPath = public_path('uploads/temp/thumb/'.$imageName);
                 $img = Image::make($sourcePath);
+               
                 $img->fit(350,300);
                 $img->save($destPath);
 
