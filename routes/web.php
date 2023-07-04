@@ -51,6 +51,8 @@ Route::middleware('auth','role:admin|staff')->group(function (){
 Route::get('/redirect',[AdminController::class,'redirect'])->middleware('auth');
 Route::get('/product-details/{id}',[UserController::class,'product_details'])->name('product_details');
 Route::get('/product-add-carts/{id}',[UserController::class,'cart'])->middleware('auth')->name('product.cart');
+Route::get('/display-carts',[UserController::class,'displayCart'])->middleware('auth')->name('display.cart');
+Route::get('/delete-cart/{id}',[UserController::class,'deleteCart'])->middleware('auth')->name('delete.cart');
 
 
 
