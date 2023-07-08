@@ -37,8 +37,11 @@
                                 font-weight: bold; border-radius:8px; border:0px" onclick="increaseInput(event)">+</button>
                             </div>
                             <div class="col">
-                                <input type="submit" style="text-transform: Uppercase" value="Add to cart">
+                                <input type="submit" style="text-transform: Uppercases" value="Add to cart">
                             </div>
+                            {{-- <div class="col">
+                                <input type="submit" style="text-transform: Uppercase" value="buy now">
+                            </div> --}}
                         </div>
 
                         </form>

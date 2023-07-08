@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     public function index(){
         $productImage = ProductImage::all();
-        $products =Product::paginate(6);
+        $products =Product::paginate(3);
         return view('home.userpage',compact('productImage','products'));       
 
     }

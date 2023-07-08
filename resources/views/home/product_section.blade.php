@@ -30,11 +30,11 @@
                            {{ Illuminate\Support\Str::limit($product->product_title, $limit = 40, $end = '...') }}
                         </h5>
                         <h6>
-                           ${{ $product->product_price}}
+                           Rs.{{ $product->product_price}}
                         </h6>
                         @if ($product->product_discount)
                         <h6 style="text-decoration:line-through; margin-left:5px; color:rgb(241, 104, 104)">
-                           ${{ $product->product_discount}}
+                           Rs.{{ $product->product_discount}}
                         </h6>
                         @endif
                         
